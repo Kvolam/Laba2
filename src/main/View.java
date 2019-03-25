@@ -12,7 +12,7 @@ public class View {
     private static JTextField SortOfCoffee;
     private static JTextField WSugar;
     private static JTextField VTeapot;
-    private static JButton calculateButton;
+    public static JButton calculateButton;
     private static JTextField WCoffee;
     public static void addComponents(Container pane) {
         pane.setLayout(new GridBagLayout());
@@ -66,10 +66,6 @@ public class View {
         calculateButton = new JButton("Сделать кофе");
         calculateButton.setPreferredSize(new Dimension(75, 20));
         pane.add(calculateButton, constraints);
-        calculateButton.addActionListener(e -> {
-                Model.ToMake();
-                JOptionPane.showMessageDialog(null,"Ваш кофе готов");
-        });
     }
     static public String getNameOfStudent (){
         return NameOfStudent.getText();
