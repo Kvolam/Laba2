@@ -6,21 +6,18 @@ public class Teapot extends Thing{
         this.Temperature=Temperature;
         this.Volume=Volume;
     }
-    public void ToPourWater(int Volume, double Temperature, Cup CupOfCoffee) throws InterruptedException {
-      this.ToFillWater(Volume,Temperature);
-      CupOfCoffee.ToFill(this.Volume,this.getWeight(),this.Temperature);
+    public void ToPourWater(Cup CupOfCoffee) {
+        CupOfCoffee.ToFill(this.Volume);
     }
-    public void ToFillWater(int Volume, double Temperature) throws InterruptedException {
+    public void ToFillWater(int Volume, Cup CupOfCoffee) {
         this.Volume=Volume;
-        this.Temperature=Temperature;
         this.HeatUpWater();
+        this.ToPourWater(CupOfCoffee);
     }
-    private void HeatUpWater() throws InterruptedException {
-        long l = 1000;
-        for(int i =0;i<Temperature;i++)
+    private void HeatUpWater() {
+        while(this.Temperature<100)
         {
-            this.Temperature++;
-            wait(l);
+            this.Temperature+=this.Temperature/100000;
         }
     }
 }
